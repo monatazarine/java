@@ -1,9 +1,15 @@
 public class Main {
     public static void main (String[] args){
 
-        // this is my first java program
-        System.out.println("i like pizza");
-        System.out.println("it's really good!");
-        System.out.println("Buy me one !!!");
+        //variables
+        int age = 20 ;
+        boolean isOnline = true ;
+        String email = "fake123@gmail.com";
+
+        System.out.println("my user's age is " + age );
+        System.out.println("my user is online : " + isOnline);
+        System.out.println("my user's email is : " + email);
+
+
     }
 }
