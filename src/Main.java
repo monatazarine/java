@@ -1,22 +1,26 @@
 import java.util.Scanner;
+import java.util.Arrays;
+
 public class Main {
     public static void main (String[] args){
-        //user input
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter your name: ");
-        String name = scanner.nextLine();
-        System.out.println("hello " + name);
-        System.out.println("Are you a student ?(true/false): ");
-        boolean isStudent = scanner.nextBoolean();
-        if (isStudent) {
-            System.out.println("You are enrolled as a student");
+
+        String[] foods =   new String[3];
+        for (int i = 0; i < foods.length ;i++){
+            System.out.print("Enter the food : ");
+            foods[i] = scanner.nextLine();
+
         }
-        else {
-            System.out.println("you are NOT enrolled ");
+        for (String food : foods){
+            System.out.println(food);
         }
+
         scanner.close();
+
+
+
 
     }
 }
