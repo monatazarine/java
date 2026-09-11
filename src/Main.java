@@ -1,38 +1,21 @@
-// SEARCH AN ARRAY
-
-import java.util.Scanner;
 
 public class Main {
 
     public static void main (String[] args){
-
-    Scanner scanner = new Scanner(System.in);
-    String[] fruits ={"Apple",
-            "Banana",
-            "Orange",
-            "Strawberry",
-            "Mango",
-            "Pineapple",
-            "Blueberry",
-            "Watermelon" };
-    boolean isFound = false;
-    String target ;
+        System.out.println(add(1 ,2 ,3 ,4));
 
 
-    System.out.print("Search : ");
-    target = scanner.nextLine();
-    // Linear search
-        for (int i = 0; i < fruits.length; i++) {
-            if(fruits[i].equals(target)) {
-                System.out.println("Element at index : " + i);
-                isFound = true;
-                break;
-            }
+    }
+
+    static int add(int...numbers){
+        int sum = 0 ;
+
+        for (int number : numbers) {
+            sum += number ;
+
         }
-        if(!isFound){
-            System.out.println("Element not found !!");
-        }
-        scanner.close();
+        return sum;
+
     }
 
     }
