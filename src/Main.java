@@ -1,45 +1,20 @@
-//2D arrays = an array where each el is an array useful for storing a matrix of data
 public class Main {
 
     public static void main (String[] args){
-        String[] fruits = {
-                "Apple",
-                "Banana",
-                "Orange",
-                "Strawberry",
-                "Mango",
-                "Pineapple",
-                "Blueberry",
-                "Watermelon"
-        };
-        String[] vegetables = {
-                "Carrot",
-                "Broccoli",
-                "Spinach",
-                "Potato",
-                "Tomato",
-                "Cucumber",
-                "Bell Pepper",
-                "Onion"
-        };
-        String[] meats = {
-                "Chicken",
-                "Beef",
-                "Pork",
-                "Lamb",
-                "Turkey",
-                "Duck",
-                "Veal",
-                "Venison"
-        };
-        String[][] groceries = {{"Apple","Banana","Orange"},
-                                {"Carrot","Broccoli","Potato"},
-                                {"Chicken","Beef","Fish"}};
-        groceries[0][0] = "Kiwi";
-        for (String[] foods: groceries){
-            for(String food: foods){
-                System.out.println(food );
+        //matrix :
+        char[][] telephone = {{'1','2','3'},
+                              {'4','5','6'},
+                              {'7','8','9'},
+                              {'*','0','#'}};
+        //display using a nested loop:
+         //first loop is for the rows
+        // char[] : each row is a array of characters
+        // nickname each inner array "row =>{'1','2','3'}
+        for (char[] row : telephone){
+            for (char number : row){
+                System.out.println(number);
             }
+            System.out.println();
         }
     }
 
