@@ -1,131 +1,28 @@
-//java slots machine
 
-
-import java.util.Random;
-import java.util.Scanner;
 
 public class Main {
 
 
 
     public static void main (String[] args) {
-        //Declare vars
-        Scanner scanner = new Scanner(System.in);
-        int balance = 100;
-        int bet;
-        int payout;
-        String[] row;
-        String playAgain;
+        //create a car obj:
+        Car car = new Car();
+        System.out.println(car);
+        // =>we will get a memo address :Car@5f184fc6
 
-        //display welcome mssg
+        //to access one of this att
+        System.out.println(car.model);
+        System.out.println(car.make);
+        System.out.println(car.price);
 
-        System.out.println("============================");
-        System.out.println("|| welcome to java slots  ||");
-        System.out.println("|| Symbols:⭐ 🍒 💰 🍉 🍋||");
-        System.out.println("============================");
-
-        // play if balance > 0
-        while (balance > 0) {
-            System.out.println("Current balance: $ " + balance);
-            //enter amount
-            System.out.print("Place your bet amount : ");
-            bet = scanner.nextInt();
-            scanner.nextLine();
-            // verify if bet > balance
-            if (bet > balance) {
-                System.out.println("INSUFFICIENT FUNDS");
-                continue;
-// verify if bet > 0
-            } else if (bet <= 0) {
-                System.out.println("Bet must be > 0");
-                continue;
-            }
-
-            // subtract bet from balance
-            else {
-                balance -= bet;
-
-            }
-            // spin row and print it
-            System.out.println("spinning .............");
-            System.out.println("spinning .............");
-            row = spinRow();
-            printRow(row);
-            // display payout
-            payout = getPayout(row, bet);
-            if (payout > 0) {
-                System.out.println("You won $$: " + payout);
-                // Add winning payout back to balance!
-                balance += payout ;
-
-            } else {
-                System.out.println("You lost !!!!");
-            }
-            // check if balance is 0 before asking to continue
-            if(balance <= 0){
-                System.out.println("You ran out of money !!");
-                break;
-            }
-            // ask to play again or exit
-            System.out.println(" Dou you like to play again ?(N/Y)");
-            playAgain = scanner.nextLine().toUpperCase();
-            if (!playAgain.equals("Y")) {
-                break;
-            }
-
-        }
+        car.start();
+        car.stop();
+        car.drive();
 
 
 
-    System.out.println("GAME OVER!!");
-    System.out.println("Final balance : $"+ balance);
-
-
-
-        scanner.close();
     }
-    static String[] spinRow(){
-        String[] symbols = {"⭐", "🍒", "💰" ,"🍉", "🍋" };
-        String[] row = new String[3];
-        Random random = new Random();
-        for (int i = 0; i < 3; i++) {
-            row[i]= symbols[random.nextInt(symbols.length)];
 
-
-        }
-        return row;
-    }
-    static void printRow(String[] row){
-        System.out.println("_______________________");
-        System.out.println(" " + String.join(" || ",row));
-        System.out.println("_______________________");
-        }
-    static int  getPayout(String[] row ,int bet ){
-            if (row[0].equals(row[1]) && row[1].equals(row[2]) ){
-                return switch (row[0]){
-                    case "⭐" -> bet * 15;
-                    case "🍒" -> bet * 10;
-
-                    case "💰" -> bet * 30;
-                    case "🍉" -> bet * 5;
-                    case "🍋" -> bet * 2;
-                    default -> 0;
-
-                };
-            } else if (row[0].equals(row[1]) || row[1].equals(row[2])|| row[0].equals(row[2]) ) {
-                return switch (row[1]) {
-                    case "⭐" -> bet * 5;
-                    case "🍒" -> bet * 3;
-                    case "💰" -> bet * 10;
-                    case "🍉" -> bet * 2;
-                    case "🍋" -> bet * 4;
-                    default -> 0;
-
-                };
-            }
-
-            return 0;
-        }
 
 }
 
