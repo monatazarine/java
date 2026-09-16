@@ -1,7 +1,6 @@
+
 public class Friend {
-    // to keep track of how many friends we have
-    //rather than all friend obj having their own copy of numbOfFriends
-    //they all are going to share one (the Friend class owns it ) and all obj have access to it
+
     static  int numbOfFriends;
     String name;
 
@@ -9,5 +8,9 @@ public class Friend {
         this.name = name;
         numbOfFriends ++;
     }
-
+    //static method
+    //using numbOfFriends without "this" cuz its a static att
+    static void showFriends(){
+        System.out.println("You have " + numbOfFriends + " total friends!");
+    }
 }
