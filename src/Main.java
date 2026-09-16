@@ -1,29 +1,26 @@
-//Constructor = a method to initialize obj
-//              pass arg to and set up initial values
 
 public class Main {
-
-
-
     public static void main (String[] args) {
 
-        //new Student = calling the constructor
-        Student student1 = new Student("SpongeBob",32,1.2);
-        Student student2 = new Student("Patrick",43,3.4);
+        User user = new User();
+        System.out.println(user.username);
+        System.out.println(user.email);
+        System.out.println(user.age);
+
+        User user1 = new User("SpongeBob");
+        System.out.println(user1.username);
+        System.out.println(user1.email);
 
 
-        System.out.println(student1.name);
-        System.out.println(student1.age);
-        System.out.println(student1.gpa);
-        System.out.println(student1.isEnrolled);
+        User user2 = new User("Sandy","sandy@gmail.com");
+        System.out.println(user2.username);
+        System.out.println(user2.email);
 
 
-        System.out.println(student2.name);
-        System.out.println(student2.age);
-        System.out.println(student2.gpa);
-        System.out.println(student2.isEnrolled);
-
-        student1.study();
+        User user3 = new User("Patrick","Patrick@gmail.com", 32);
+        System.out.println(user3.username);
+        System.out.println(user3.email);
+        System.out.println(user3.age);
 
     }
 
