@@ -1,19 +1,14 @@
-//Interface =  a blueprint for a class that specifies a set of methods 
-//that the class must implement.
-//An interface in Java is like a contract. It specifies what an object can do, leaving it up to the implementing class to define how it does it.
-// Interfaces are used to achieve abstraction and multiple inheritance.(a class can have parent classes)
+//Polymorphism = Obj can identify as other obj
+//              it allows objects of different types (Car, Boat)
+//              to be treated as instances of a shared parent class or interface (Vehicle)
 public class Main{
     public static  void main(String[] args) {
-             Rabbit rabbit = new Rabbit();
-             rabbit.flee();
 
-             Hawk hawk = new Hawk();
-             hawk.hunt();
-             
-             Fish fish = new Fish();
-             fish.flee();
-             fish.hunt();
 
+        Animal myPet = new Dog(); // Polymorphism! A Dog identifying as an Animal
+        myPet.makeSound();
+        //If Animal is abstract, Java refuses to let you create a plain Animal object.
+        // It forces you to pick a specific, real species like Dog or Cat.
 
     }
 }
