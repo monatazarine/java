@@ -1,6 +1,6 @@
-public class Animal {
-    // This is a regular class, not abstract!
+public abstract class Animal {
+    
     void makeSound(){
-        System.out.println("animal sound...");
+
     }
 }

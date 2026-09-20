@@ -1,14 +1,28 @@
-//Polymorphism = Obj can identify as other obj
-//              it allows objects of different types (Car, Boat)
-//              to be treated as instances of a shared parent class or interface (Vehicle)
+
+//Runtime Polymorphism = when the method that gets executed is determined at runtime based on the actual object type
+
+import java.util.Scanner;
 public class Main{
     public static  void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+        Animal myPet ;  //The variable myPet is just a blank placeholder .
 
-        Animal myPet = new Dog(); // Polymorphism! A Dog identifying as an Animal
-        myPet.makeSound();
-        //If Animal is abstract, Java refuses to let you create a plain Animal object.
-        // It forces you to pick a specific, real species like Dog or Cat.
+
+        System.out.print("Enter your pet type (cat=1/dog=2): ");
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+            myPet = new Cat();
+            myPet.makeSound();
+        } else if (choice == 2) {
+            myPet = new Dog();
+             myPet.makeSound();
+        } else {
+            System.out.println("Invalid choice. ");
+
+        }     
+        
 
     }
 }
