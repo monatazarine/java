@@ -1,17 +1,20 @@
-//Getters = methods that retrieve/access the value of a private field
-//Setters = methods that modify the value of a private field
-
+//Aggregation = Represents a "has-a" relationship between objects.
+// It is a specialized form of association where the child can exist independently of the parent.
 public class Main{
     public static  void main(String[] args) {
+      Book book1 = new Book("Crime and Punishment", "Fyodor Dostoevsky", 430);  
 
-         Dog dog1 = new Dog("Max", "German Shepherd", 1);  
-        // System.out.println("Dog name: " + dog1.name + ", Breed: " + dog1.breed + ", Lifespan: " + dog1.lifespan + " years");  
-        // The above line will cause a compilation error because the fields are private and cannot be accessed directly from outside the class.
-        // Instead, we can use the getter methods to access the values of the private fields:
-        System.out.println("Dog name: " + dog1.getName() + ", Breed: " + dog1.getBreed() + ", Lifespan: " + dog1.getLifespan() + " years");
-        //Dog.name = "Duke"; // This line will cause a compilation error 
-        dog1.setName("Duke"); 
 
+      Book book2 = new Book("Metamorphosis", "Franz Kafka", 201);       
+
+
+      Book book3 = new Book("1984", "George Orwell", 328);
+
+      Book[] books = {book1, book2, book3}; 
+
+      Library library = new Library("City Library", 1995, books);
+
+      library.displayLibraryInfo();
 
     }
 }
