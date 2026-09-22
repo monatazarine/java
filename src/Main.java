@@ -1,19 +1,51 @@
-//Composition = "Part of" relationship between objects
-//the child object's lifecycle is completely tied to the parent object
-//              For example an Engine is "part of " a car
-//              Allows complex obj to be constructed from smaller objs
+
+//Wrapper classes = allow primitive vals (int , char ...) to be treated as obj ,
+//primitive types store raw values directly in memory for maximum performance.
+// However, many utility features (like ArrayLists or generic data structures) only work with objects.
 
 public class Main{
     public static  void main(String[] args) {
+        //Autoboxing :: Automatic conversion from a primitive type to its wrapper class object.
+        //rather than int a = 123;
+        //we use wrapper classes to make a an obj
+        //Integer a =  new Integer(123);
+        //Double b = new Double(1.38);
+        //Boolean c = new Boolean(true);
 
-        Car car = new Car("Corvette", 2025,"V8");
+        Integer a = 123;//converts int 123 into an Integer object!
+        Double b = 1.38;
+        Boolean c = true;
 
-        //System.out.println(car.engine);
-        // result =Engine@31dc339b , because engine is an obj
-        //instead we will the access modifier
-        System.out.println(car.engine.type);
+        //Unboxing : Automatic conversion from a wrapper class object back to a primitive type.
 
-        car.start();
+        int x = a;//extracts the int value from the Integer object!
+        double v = b;
+        boolean y = c;
+
+        //Parsing & Utility Methods:
+
+        // to convert a primitive data type into a string
+        String z = Integer.toString(123);
+
+        // to convert a string  into a primitive data type
+        int R = Integer.parseInt("123");
+        double u = Double.parseDouble("1.87");
+        char i = "Pizza".charAt(0);
+        boolean s = Boolean.parseBoolean("true");
+
+        //checks if a character is an alphabetical letter.
+        char letter = 'a';
+        System.out.println(Character.isLetter(letter));
+        //result = true
+        char letter1 = '$';
+        System.out.println(Character.isLetter(letter1));
+        //result = false
+        //checks if a character is capital.
+        char letter2 = 'B';
+        System.out.println(Character.isUpperCase(letter2));
+
+
+
 
 
     }
