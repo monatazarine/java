@@ -1,20 +1,20 @@
-//Aggregation = Represents a "has-a" relationship between objects.
-// It is a specialized form of association where the child can exist independently of the parent.
+//Composition = "Part of" relationship between objects
+//the child object's lifecycle is completely tied to the parent object
+//              For example an Engine is "part of " a car
+//              Allows complex obj to be constructed from smaller objs
+
 public class Main{
     public static  void main(String[] args) {
-      Book book1 = new Book("Crime and Punishment", "Fyodor Dostoevsky", 430);  
 
+        Car car = new Car("Corvette", 2025,"V8");
 
-      Book book2 = new Book("Metamorphosis", "Franz Kafka", 201);       
+        //System.out.println(car.engine);
+        // result =Engine@31dc339b , because engine is an obj
+        //instead we will the access modifier
+        System.out.println(car.engine.type);
 
+        car.start();
 
-      Book book3 = new Book("1984", "George Orwell", 328);
-
-      Book[] books = {book1, book2, book3}; 
-
-      Library library = new Library("City Library", 1995, books);
-
-      library.displayLibraryInfo();
 
     }
 }
