@@ -1,46 +1,27 @@
 
-//ArrayList = a resizable array that stores obj(autoboxing )
-//            Arrays are fixed in size .But ArrayLists can change
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        //creating an ArrayList
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        //Appends an item to the end
-        list.add(2);
-        list.add(3);
-        list.add(36);
-
-        System.out.println(list);//=> [2, 3, 36]
+        Scanner scanner = new Scanner(System.in);
 
         ArrayList<String> fruits = new ArrayList<>();
 
-        fruits.add("Apple");
-        fruits.add("Strawberry");
-        fruits.add("Mango");
-        fruits.add("Banana");
+        System.out.println("Enter the number of fruit You would like : ");
+        int numbOfFruit = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println(fruits);//=> [Apple, Strawberry, Mango, Banana]
-        //Removes the item at that index
-        fruits.remove(3);
-        System.out.println(fruits);//=> [Apple, Strawberry, Mango]
-        //Replaces the item at a specific index
-        fruits.set(0,"Pineapple");
-        System.out.println(fruits);//=>[Pineapple, Strawberry, Mango]
-        //Retrieves the item at a specific index
-        System.out.println(fruits.get(1));//=>Strawberry
-        //Returns the total count of elements
-        System.out.println(fruits.size());//=>3
-        //Sorts the elements alphabetically/numerically
-        Collections.sort(fruits);
-        System.out.println(fruits);//=>[Mango, Pineapple, Strawberry]
+        for(int i = 1 ; i <= numbOfFruit; i++){
+            System.out.print("Enter fruit number " + i + ": ");
+            String fruit = scanner.nextLine();
+            fruits.add(fruit);
+        }
+        System.out.println(fruits);
 
-
+        scanner.close();
 
     }
 }
