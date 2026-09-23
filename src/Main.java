@@ -1,50 +1,44 @@
 
-//Wrapper classes = allow primitive vals (int , char ...) to be treated as obj ,
-//primitive types store raw values directly in memory for maximum performance.
-// However, many utility features (like ArrayLists or generic data structures) only work with objects.
+//ArrayList = a resizable array that stores obj(autoboxing )
+//            Arrays are fixed in size .But ArrayLists can change
 
-public class Main{
-    public static  void main(String[] args) {
-        //Autoboxing :: Automatic conversion from a primitive type to its wrapper class object.
-        //rather than int a = 123;
-        //we use wrapper classes to make a an obj
-        //Integer a =  new Integer(123);
-        //Double b = new Double(1.38);
-        //Boolean c = new Boolean(true);
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-        Integer a = 123;//converts int 123 into an Integer object!
-        Double b = 1.38;
-        Boolean c = true;
+public class Main {
+    public static void main(String[] args) {
 
-        //Unboxing : Automatic conversion from a wrapper class object back to a primitive type.
+        //creating an ArrayList
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        //Appends an item to the end
+        list.add(2);
+        list.add(3);
+        list.add(36);
 
-        int x = a;//extracts the int value from the Integer object!
-        double v = b;
-        boolean y = c;
+        System.out.println(list);//=> [2, 3, 36]
 
-        //Parsing & Utility Methods:
+        ArrayList<String> fruits = new ArrayList<>();
 
-        // to convert a primitive data type into a string
-        String z = Integer.toString(123);
+        fruits.add("Apple");
+        fruits.add("Strawberry");
+        fruits.add("Mango");
+        fruits.add("Banana");
 
-        // to convert a string  into a primitive data type
-        int R = Integer.parseInt("123");
-        double u = Double.parseDouble("1.87");
-        char i = "Pizza".charAt(0);
-        boolean s = Boolean.parseBoolean("true");
-
-        //checks if a character is an alphabetical letter.
-        char letter = 'a';
-        System.out.println(Character.isLetter(letter));
-        //result = true
-        char letter1 = '$';
-        System.out.println(Character.isLetter(letter1));
-        //result = false
-        //checks if a character is capital.
-        char letter2 = 'B';
-        System.out.println(Character.isUpperCase(letter2));
-
-
+        System.out.println(fruits);//=> [Apple, Strawberry, Mango, Banana]
+        //Removes the item at that index
+        fruits.remove(3);
+        System.out.println(fruits);//=> [Apple, Strawberry, Mango]
+        //Replaces the item at a specific index
+        fruits.set(0,"Pineapple");
+        System.out.println(fruits);//=>[Pineapple, Strawberry, Mango]
+        //Retrieves the item at a specific index
+        System.out.println(fruits.get(1));//=>Strawberry
+        //Returns the total count of elements
+        System.out.println(fruits.size());//=>3
+        //Sorts the elements alphabetically/numerically
+        Collections.sort(fruits);
+        System.out.println(fruits);//=>[Mango, Pineapple, Strawberry]
 
 
 
