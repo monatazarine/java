@@ -1,27 +1,27 @@
 
+//Exception = An event that interrupts the normal flow of a program
 
-import java.util.ArrayList;
-import java.util.Collections;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<String> fruits = new ArrayList<>();
-
-        System.out.println("Enter the number of fruit You would like : ");
-        int numbOfFruit = scanner.nextInt();
-        scanner.nextLine();
-
-        for(int i = 1 ; i <= numbOfFruit; i++){
-            System.out.print("Enter fruit number " + i + ": ");
-            String fruit = scanner.nextLine();
-            fruits.add(fruit);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter a number :");
+            int number = scanner.nextInt();
+            System.out.println(number);
+        } catch (ArithmeticException e) {
+            System.out.println("YOU CAN'T DIVIDE BY ZERO !");
+        } catch (InputMismatchException e) {
+            System.out.println("YOU NEED TO ENTER A NUMBER !");
+        } catch (Exception e) {
+            System.out.println("Something went wrong");
+        } finally {
+            System.out.println("This will always be executed");
         }
-        System.out.println(fruits);
 
-        scanner.close();
 
     }
 }
