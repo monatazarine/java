@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "src\\Exit Music.wav";
+        String filePath = "src\\KarmaPolice.wavP";
         File file = new File(filePath);
          //AudioSystem.getAudioInputStream(file): Converts the file into a readable audio stream.
         try (Scanner scanner = new Scanner(System.in) ;AudioInputStream audioStream = AudioSystem.getAudioInputStream(file)){
