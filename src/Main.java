@@ -10,16 +10,18 @@ public class Main {
     public static void main(String[] args) {
         String filePath = "src\\Exit Music.wav";
         File file = new File(filePath);
-
+         //AudioSystem.getAudioInputStream(file): Converts the file into a readable audio stream.
         try (Scanner scanner = new Scanner(System.in) ;AudioInputStream audioStream = AudioSystem.getAudioInputStream(file)){
 
 
             //clip is like a music player that allows to load an audio file and then play ,pause or reset it
             Clip clip = AudioSystem.getClip();
             //to open the audio stream obj
-            clip.open(audioStream);
+            clip.open(audioStream); //Loads the raw audio stream into memory so it's ready to play instantly.
+
             //to play the audio
             //clip.start();
+
             String response= "";
             while (!response.equals("Q")){
                 System.out.println("__Menu__");
