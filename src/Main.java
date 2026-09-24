@@ -1,31 +1,61 @@
+//Music player
+
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //how to write a file
-        //fileWrite = for small & medium-sized text files
-        //BufferedWrite = better performance for large amounts of text
-        //PrintWrite = for structured data , like reports or logs
-        //FileOutputStream = for binary files (images, audio files ...)
+        String filePath = "src\\Exit Music.wav";
+        File file = new File(filePath);
 
-        String path = "C:\\Users\\PC MGOUNA\\Desktop\\java\\POO\\test.txt";
-        String txtContent  = """
-                I like coffee ☕!!!!
-                I drink a cup every morning !
-                It gives me the energy needed for the day.
-                """;
-        try(FileWriter writer = new FileWriter(path)) {
-            writer.write(txtContent);
-            System.out.println("File has been written ");
-        } catch (FileNotFoundException e) {
-            System.out.println("Could not locate file location");
+        try (Scanner scanner = new Scanner(System.in) ;AudioInputStream audioStream = AudioSystem.getAudioInputStream(file)){
+
+
+            //clip is like a music player that allows to load an audio file and then play ,pause or reset it
+            Clip clip = AudioSystem.getClip();
+            //to open the audio stream obj
+            clip.open(audioStream);
+            //to play the audio
+            //clip.start();
+            String response= "";
+            while (!response.equals("Q")){
+                System.out.println("__Menu__");
+                System.out.println("P = Play");
+                System.out.println("S = Stop");
+                System.out.println("Q = Quit");
+                System.out.println("_________");
+                System.out.print("Enter your Choice : ");
+
+                response = scanner.nextLine().toUpperCase();
+                switch ( response){
+                    case "P" -> clip.start();
+                    case "S" -> clip.stop();
+                    case "Q" -> clip.close();
+                    default -> System.out.println("INVALID CHOICE !!");
+
+
+                }
+
+            }
+
+
+        }catch (FileNotFoundException e ){
+            System.out.println("Unable to find file location !!");
         }
-
+        catch (UnsupportedAudioFileException e){
+            System.out.println("Audio file not supported !");
+        } catch (LineUnavailableException e) {
+            System.out.println("Unable to access audio resource");
+        }
         catch (IOException e) {
-            System.out.println("Could not write file !");
+            System.out.println("Something went wrong !!");
         }
+        finally {
+            System.out.println("Done!");
 
+        }
     }
 }
