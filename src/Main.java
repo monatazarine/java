@@ -1,47 +1,26 @@
-//How to work with Dates & Times
-//(LocalDate, LocaleTime , LocalDateTime)
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args)  {
+        //Anonymous class = a class that doesn't have a name .Cannot br reused .
+        //                  Add custom behavior without having to create a new class .
+        //                  Often for one time users (TimerTask, Runnable ,callbacks)
 
-        LocalDate date = LocalDate.now();
-        //date = today's date
+        Dog dog1 = new Dog();
+        dog1.speak();
+        //what if there is a unique dog
+        //instead of writing separate class file (UniqueDog extends Dog) just to change one method
+        //creating a nameless subclass right on the spot for dog2 to give it unique behavior
+        Dog dog2 = new Dog(){
+            //can define any unique features or override methods
+            @Override
+            void speak(){
+                System.out.println("Ruh Roh !!");
+            }
 
-        LocalTime time = LocalTime.now();
-        //time = the current time
-        System.out.println(time);
+        };
+        dog2.speak();
 
-        //both the date & time
-        LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println(dateTime);
-
-        //Custom format
-        LocalDateTime dateTime1 = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String newDateTime = dateTime1.format(formatter);
-        System.out.println(newDateTime);
-
-        //Custom date obj
-        LocalDateTime dateTime2 = LocalDateTime.of(2023 ,4,17 ,6,50,32);
-        System.out.println(dateTime2);
-
-        //to compare dates
-        if(dateTime2.isBefore(dateTime1)){
-            System.out.println(dateTime2 + " is earlier than "+ dateTime1);
-
-        } else if (dateTime2.isAfter(dateTime1)) {
-            System.out.println(dateTime2 + " is later than "+ dateTime1);
-        }
-        else if (dateTime2.isEqual(dateTime1)){
-            System.out.println(dateTime2 + " is equal "+ dateTime1);
-
-        }
 
     }
 }
