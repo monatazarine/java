@@ -1,51 +1,33 @@
 
-//Timer = Classth that schedules tasks at specific times or periodically
-//        Useful for : sending notifications ,scheduled updates , repetitive actions
-//TimerTask = Represents the task that will be executed by the Timer
-//             extend the TimerTask class to define the task
-//             Create a subclass of TimerTask and @Override run()
+//COUNTDOWN TIMER PROGRAM
 
-
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args)  {
-        //creating a timer
-        //The Timer class acts as a background scheduler
-        // It manages a background thread responsible for executing tasks at specific times or delays
-        Timer timer = new Timer();
+        Scanner scanner = new Scanner(System.in);
 
-        //Creating a TimerTask
-        // we need to implement the run method using an anonymous class
-        //TimerTask is an "abstract" class representing the actual job you want to run.
+        System.out.print("Enter the number of seconds : ");
+        int response = scanner.nextInt();
+
+        Timer timer = new Timer();
         TimerTask task = new TimerTask() {
-            int count = 3;
+            int count = response;
 
             @Override
             public void run() {
-                System.out.println("hello world !");
-                //to cancel the timer
+                System.out.println(count);
                 count --;
                 if (count<0){
-                    System.out.println("Task complete");
+                    System.out.println("HAPPY NEW YEAR!!");
                     timer.cancel();
                 }
             }
         };
-        //to execute our task in 3 sec
-        //3000 : the delay
 
-        timer.schedule(task, 3000);
-
-        //to schedule at a fixed rate /periodecally
-        //1000 : the period
-        timer.schedule(task, 0, 1000);
-
-
-
-
-
+        timer.scheduleAtFixedRate(task , 0 , 1000);
 
     }
 }
