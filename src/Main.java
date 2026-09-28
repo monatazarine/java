@@ -1,55 +1,38 @@
-import java.util.HashMap;
+import java.util.Scanner;
 
-//HashMap = a data type structure that stores key value pairs(like a dictionary)
-//          Keys are unique , values can be duplicated
-//          Does not maintain any order for  memory efficiency
-//          HashMap <Key, Value>
+//Enums = (Enumerations) a special kind od class that
+//        represents a fixed set of constants
+//        They improve code readability and are easy to maintain
+//        More efficient with switches when comparing String
 public class Main {
     public static void main(String[] args)  {
-        //Key = String(product) ; Value = Double(price)
-        HashMap<String , Double> map = new HashMap<>();
-        //Inserts a new key-value pair
-        map.put("apple", 0.50);
-        map.put("orange", 0.70);
-        map.put("banana", 0.25);
 
-        System.out.println(map);
-        //{orange=0.7, banana=0.25, apple=0.5}
-
-        //Every key must be unique
-        // If an existing key is added :
-        //map.put("banana", 1.25);
-        //it overwrites the old value
+        Day day = Day.FRIDAY;
+        System.out.println(day);
+        //=> FRIDAY
+        System.out.println(day.getDayNumber());
+        //=> 6
 
 
-        //to get te value associated with the specified key
-        System.out.println(map.get("apple"));
-        //=>0.5
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a day of the week :");
+        String choice = scanner.nextLine().toUpperCase();
+        try{
+            //is a built-in method ,takes a string("FRIDAY") converts it into the matching enum(Day.FRIDAY)
+            Day dayOfChoice = Day.valueOf(choice);
+            switch (dayOfChoice) {
+                case MONDAY, TUESDAY, WEDNESDAY, THUSDAY, FRIDAY -> System.out.println("Its a weekday!");
+                case SATURDAY, SANDAY -> System.out.println("Its a weekend!");
 
-        //to check if a key/value exist
-        System.out.println(map.containsKey("banana"));
-        //=> true
-        if(map.containsValue(0.25)){
-            System.out.println("it exist");
-        }else {
-            System.out.println("doesn't exist");
+
+            }
         }
+            catch(IllegalArgumentException e){
+                System.out.println("Please enter a valid day!");
 
-        //the size of a map
-        System.out.println(map.size());
-        //=> 3
-
-        //to custom format a map
-        // for every in key the map.get(key) looks up the corresponding price
-        //keySet():extracts all the keys into a set (["apple", "orange", "banana"])
-        for (String key : map.keySet()) {
-            System.out.println(key + " : $" + map.get(key));
 
         }
-
-
-
-
+        scanner.close();
 
     }
 }
