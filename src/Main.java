@@ -1,43 +1,55 @@
-//Genetics = a concept where you can write a class , interface , or method
-//          that is compatible with a different data type
-//          <T> type parameter (placeholder that gets replaced with a real type later)
-//          <String> type argument (specifies the type,telling the compiler, "Make this box specifically for Strings")
-//Instead of writing separate classes for StringBox, IntBox, or DoubleBox
-// you write one generic template using a type parameter like <T>
+import java.util.HashMap;
 
-import java.util.ArrayList;
-
+//HashMap = a data type structure that stores key value pairs(like a dictionary)
+//          Keys are unique , values can be duplicated
+//          Does not maintain any order for  memory efficiency
+//          HashMap <Key, Value>
 public class Main {
     public static void main(String[] args)  {
-        //Example 1:Built-in Generics
-        //passing <String> ensures that only strings can be added to the list
-        ArrayList<String> fruits = new ArrayList<>();
+        //Key = String(product) ; Value = Double(price)
+        HashMap<String , Double> map = new HashMap<>();
+        //Inserts a new key-value pair
+        map.put("apple", 0.50);
+        map.put("orange", 0.70);
+        map.put("banana", 0.25);
 
-        fruits.add("Apple");
-        fruits.add("Mango");
+        System.out.println(map);
+        //{orange=0.7, banana=0.25, apple=0.5}
 
-        //Example 2:Custom Generic Class
-        Box<String> box1 = new Box<>();
-        //box1 replaces T with String:its item must be a String
-        box1.setItem("Book");
-        System.out.println(box1.getItem());
-
-        //box2 replaces T with Integer: its item must be a number
-        Box<Integer> box2 = new Box<>();
-
-        box2.setItem(2);
-        System.out.println(box2.getItem());
-
-        //Example 3:Multiple Type Parameters
-        //A class can take multiple type parameters ( <T, U> ; <K, V>)
-        Product<String,Double>  product1 = new Product<>("Apple",0.50);
-
-        System.out.println(product1.getItem());
-        System.out.println(product1.getPrice());
+        //Every key must be unique
+        // If an existing key is added :
+        //map.put("banana", 1.25);
+        //it overwrites the old value
 
 
-        Product<String, Integer> product2 = new Product<>("Ticket",15);
-        System.out.println(product2.getItem());
-        System.out.println(product2.getPrice());
+        //to get te value associated with the specified key
+        System.out.println(map.get("apple"));
+        //=>0.5
+
+        //to check if a key/value exist
+        System.out.println(map.containsKey("banana"));
+        //=> true
+        if(map.containsValue(0.25)){
+            System.out.println("it exist");
+        }else {
+            System.out.println("doesn't exist");
+        }
+
+        //the size of a map
+        System.out.println(map.size());
+        //=> 3
+
+        //to custom format a map
+        // for every in key the map.get(key) looks up the corresponding price
+        //keySet():extracts all the keys into a set (["apple", "orange", "banana"])
+        for (String key : map.keySet()) {
+            System.out.println(key + " : $" + map.get(key));
+
+        }
+
+
+
+
+
     }
 }
