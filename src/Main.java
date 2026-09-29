@@ -1,30 +1,33 @@
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-//threading = allows a program to run multiple tasks simultaneously
-//            helps improve performance with time-consuming operations
-//            (File I/O , network communication , or any background tasks)
-//Creating a thread:
-//Op1 : Extending the Thread class
-//Op2 : Implement the Runnable interface
+//Alarm Clock
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
-        //The main thread
         Scanner scanner = new Scanner(System.in);
-        MyRunnable myRunnable = new MyRunnable();
-        Thread thread = new Thread(myRunnable);
-        //Damon thread auto-dies when the main thread is over
-        thread.setDaemon(true);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime alarmTime = null;
+        while (alarmTime == null){
+            try {
+                System.out.print("Enter an alarm time(HH:MM:SS): ");
+                String inputTime = scanner.nextLine();
+                alarmTime = LocalTime.parse(inputTime,formatter);
+                System.out.println("Alarm is set : " + alarmTime);
 
-        thread.start();
-        System.out.println("You have 5 sec to enter your name : ");
+            }catch (DateTimeParseException e){
+                System.out.println("Invalid time format!Try :(HH:MM:SS)");
+            }
+        }
 
-        String name = scanner.nextLine();
-        System.out.println("Hello " + name);
+        AlarmClock alarmClock = new AlarmClock(alarmTime);
+        Thread alarmThread = new Thread(alarmClock);
+        alarmThread.start();
 
         scanner.close();
-
-
-
     }
+
 }
